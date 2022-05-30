@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+require_relative "../lib/spacexsearch"
+require "optionparser"
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Welcome to SpaceX Thingy"
+  opts.on("-sSEARCH", "--search=SEARCH", "Term to search the SpaceX API for") do |search|
+    options[:search] = search
+  end
+end.parse!
+
+puts SpaceXSearch.search(options)
